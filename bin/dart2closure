@@ -14,10 +14,10 @@ import './../lib/src/analyzer_experimental/java_engine.dart';
 import './../lib/src/analyzer_experimental/java_junit.dart';
 
 // From this package.
+import '../lib/src/bridge_visitor.dart';
 import '../lib/src/debug.dart';
 import '../lib/src/parse.dart';
 import '../lib/src/utils.dart';
-import '../lib/src/unparse_to_closure.dart';
 
 
 /**
@@ -33,8 +33,7 @@ import '../lib/src/unparse_to_closure.dart';
 
 translateStream(Stream stream) {
   readFullStream(stream).then((text) {
-    var ast = parseText(text);
-    var js = unparseToClosureJs(ast);
+    var js = stringBridge(text, (x) => new BridgeVisitor.root());
     print(js);
   });
 }
