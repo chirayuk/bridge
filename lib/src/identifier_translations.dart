@@ -24,6 +24,8 @@ class TranslationContext {
       this(isPrefixed: isPrefixed,
            currentScope: scope.currentScope,
            currentType: scope.currentType);
+
+  toString() => "TranslationContext(isPrefixed=$isPrefixed, currentScope=$currentScope, currentType=$currentType)";
 }
 
 
