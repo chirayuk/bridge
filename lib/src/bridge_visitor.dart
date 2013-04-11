@@ -62,8 +62,8 @@ class BridgeVisitor extends BaseVisitor {
 
 
   visitBlockFunctionBody(BlockFunctionBody node) => visitFunctionBody(node);
+
   /*
-  R visitBooleanLiteral(BooleanLiteral node);
   R visitBreakStatement(BreakStatement node);
 */
   visitCascadeExpression(CascadeExpression node) => visitExpression(node);
@@ -91,6 +91,7 @@ class BridgeVisitor extends BaseVisitor {
   R visitDefaultFormalParameter(DefaultFormalParameter node);
   R visitDoStatement(DoStatement node); */
 
+  visitBooleanLiteral(BooleanLiteral node) => visitExpression(node);
   visitDoubleLiteral(DoubleLiteral node) => visitExpression(node);
 
 
