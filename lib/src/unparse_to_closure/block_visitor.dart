@@ -134,11 +134,8 @@ class BlockVisitor extends BaseVisitor {
       VisitResult.fromJsNode(new js.ExpressionStatement(stmt.expression.accept(this.otherVisitor).node));
   // TODO
 /*
-DoStatement
-ExpressionStatement
 ForEachStatement
 ForStatement
-FunctionDeclarationStatement
 LabeledStatement
 SwitchStatement
 TryStatement
