@@ -46,9 +46,13 @@ class VisitResult {
     }
   }
 
+  dumpNodes() {
+    return nodes.map((node) => js.prettyPrint(node).getText()).join(",\n").replaceAll("\n", "\n  ");
+  }
+
   toString() {
     // return "VisitResult(type=$type, nodes=$nodes)";
-    return "VisitResult(nodes=$nodes)";
+    return "VisitResult(nodes=\n  ${dumpNodes()})";
   }
 }
 
