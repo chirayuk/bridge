@@ -106,6 +106,14 @@ class BlockVisitor extends BaseVisitor {
     return VisitResult.fromJsNode(jsbuilder.if_(condition, thenStatements, elseStatements));
   }
 
+  VisitResult visitDoStatement(DoStatement _do) {
+    js.Node condition = _do.condition.accept(this.otherVisitor).node;
+    List<js.Statement> body = _do.body.accept(this).nodes;
+    return VisitResult.fromJsNode(new js.Do(
+        jsbuilder.toStatement(body),
+        condition));
+  }
+
   VisitResult visitWhileStatement(WhileStatement _while) {
     js.Node condition = _while.condition.accept(this.otherVisitor).node;
     List<js.Statement> body = _while.body.accept(this).nodes;

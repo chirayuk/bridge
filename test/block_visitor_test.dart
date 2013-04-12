@@ -299,6 +299,43 @@ main() {
         );
   });
 
+  // do(true);
+  test('should translate simple do loop', () {
+    expectBlock(
+        """
+        {
+          do {} while(true);
+        }
+        """,
+        // JS.
+        """
+        {
+          do {
+          } while (true-stubEXPR);
+        }
+        """
+        );
+  });
+
+  // do(a > 0) a = a - 1;
+  test('should translate single statement do loop', () {
+    expectBlock(
+        """
+        {
+          do { continue; } while(notDone);
+        }
+        """,
+        // JS.
+        """
+        {
+          do {
+            continue;
+          } while (stubIDENTIFIER_notDone);
+        }
+        """
+        );
+  });
+
   // ExpressionStatements
   test('should translate expression statements', () {
     expectBlock('{ a; }', """
